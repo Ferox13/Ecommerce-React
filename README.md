@@ -1,50 +1,31 @@
-# React + TypeScript + Vite
+# Aplicación Web de Venta de Productos
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Autor
 
-Currently, two official plugins are available:
+Fernando Rodríguez Rodríguez
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Descripción
+Este proyecto consiste en el desarrollo de una aplicación web de venta de productos que podría evolucionar hacia un proyecto de fin de ciclo. La plataforma permite la venta de diversos productos como libros, videojuegos, ropa, entre otros.
 
-## Expanding the ESLint configuration
+## Tecnologías Utilizadas
+- **Frontend**: React
+- **Estilos**: CSS (Flexbox, Grid), Bootstrap o Tailwind
+- **Backend**: Symfony/PHP, Java/Spring/Hibernate o NodeJS
+- **Base de Datos**: MySQL, MongoDB o Firebase
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Características Principales
+- **Responsive Design**: Adaptado para dispositivos móviles, tablets y pantallas grandes.
+- **Página principal**: Descripción de la tienda y productos destacados.
+- **Listado de productos**: Visualización paginada o con scroll infinito, búsqueda y filtrado.
+- **Detalle de producto**: Información completa del producto y opción de agregar al carrito si el usuario está logueado.
+- **Carrito de compras**: Listado de productos seleccionados con opción de eliminación y modificación de cantidad.
+- **Autenticación**: Páginas de login y registro con validaciones.
 
-- Configure the top-level `parserOptions` property like this:
+## Opciones de Backend y Autenticación
+- **Base de datos**: Local (MySQL, MongoDB) o en la nube (Firebase).
+- **Autenticación**: Base de datos o Firebase Authentication.
+- **Conexión con React**: Servidor en PHP, Java o NodeJS.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## Instalación y Configuración
+Se debe proporcionar un README con instrucciones detalladas para la instalación y configuración del entorno, asegurando que cualquier persona con conocimientos técnicos pueda ejecutar la aplicación sin dificultad.
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
