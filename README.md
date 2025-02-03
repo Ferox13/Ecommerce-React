@@ -1,6 +1,6 @@
 # Aplicación Web de Venta de Productos
 
-##Autor
+#Autor
 
 Fernando Rodríguez Rodríguez
 
