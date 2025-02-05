@@ -1,3 +1,6 @@
+import "bootstrap/dist/css/bootstrap.min.css";
+
+
 const ContactSection = () => (
     <footer className="mt-5 text-center border-top pt-3">
       <p>Teléfono: 123-456-789</p>

@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Product } from "../../types";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const ProductCard = ({ product }: { product: Product }) => (
   <div className="col-md-4 col-lg-2 mb-4 d-flex justify-content-center w-100">
