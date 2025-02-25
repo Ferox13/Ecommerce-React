@@ -4,3 +4,8 @@ export interface Product {
   price: number;
   image: string;
 }
+
+export interface ProductContextType {
+  products: Product[];
+  loading: boolean;
+}
