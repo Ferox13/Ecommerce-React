@@ -2,11 +2,7 @@ import React, { createContext, useContext, useEffect, useState } from "react";
 import { db } from "../api/firebaseConfig";
 import { collection, getDocs } from "firebase/firestore";
 import { toast } from "react-toastify";
-import {Product} from "../types/index";
-import {ProductContextType} from "../types/index";
-
-
-
+import { Product, ProductContextType } from "../types";
 
 const ProductContext = createContext<ProductContextType | undefined>(undefined);
 
@@ -18,11 +14,16 @@ export const ProductProvider: React.FC<ProductProviderProps> = ({ children }) =>
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
-  // Obtener productos
+  // Obtener productos con retardo para ver el spinner
   const fetchProducts = async () => {
     try {
       const querySnapshot = await getDocs(collection(db, "products"));
-      const productList = querySnapshot.docs.map(doc => ({ id: Number(doc.id), ...(doc.data() as Omit<Product, "id">) })) as Product[];
+      // Simulación de retraso de 2 segundos
+      await new Promise(resolve => setTimeout(resolve, 2000));
+      const productList = querySnapshot.docs.map(doc => ({
+        id: Number(doc.id),
+        ...(doc.data() as Omit<Product, "id">)
+      })) as Product[];
       setProducts(productList);
     } catch (error) {
       if (error instanceof Error) {
@@ -36,7 +37,7 @@ export const ProductProvider: React.FC<ProductProviderProps> = ({ children }) =>
   };
 
   useEffect(() => {
-    fetchProducts(); // Cargar productos al iniciar la app
+    fetchProducts();
   }, []);
 
   return (

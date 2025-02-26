@@ -1,26 +1,30 @@
 import { Link } from "react-router-dom";
-import { Product } from "../../types";
-import "bootstrap/dist/css/bootstrap.min.css";
+import {Product} from "../../types";
 
-const ProductCard = ({ product }: { product: Product }) => (
-  <div className="col-md-4 col-lg-2 mb-4 d-flex justify-content-center w-100">
-    <Link
-      to={`/product/${product.id}`}
-      className="card text-decoration-none text-dark d-flex flex-column"
-      style={{ width: "250px", height: "250px" }}
-    >
+const ProductCard = ({ product }: { product: Product }) => {
+  console.log("🔗 Producto en ProductCard:", product);
+
+  return (
+    <div className="card h-100">
       <img
-        src={product.image}
-        alt={product.name}
+        src={`http://localhost:5000${product.image}`}
+        alt={product.title}
         className="card-img-top"
-        style={{ objectFit: "cover", height: "150px" }}
+        style={{ height: "200px", objectFit: "cover" }}
       />
-      <div className="card-body p-2 d-flex flex-column justify-content-center">
-        <h5 className="card-title mb-2">{product.name}</h5>
-        <p className="card-text m-0">{product.price}€</p>
+      <div className="card-body d-flex flex-column">
+        <h5 className="card-title">{product.title}</h5>
+        <p className="card-text">${product.price}</p>
+        {product.id ? (
+          <Link to={`/product/${product.id}`} className="btn btn-primary mt-auto">
+            Ver detalles
+          </Link>
+        ) : (
+          <p className="text-danger">ID no disponible</p>
+        )}
       </div>
-    </Link>
-  </div>
-);
+    </div>
+  );
+};
 
 export default ProductCard;
