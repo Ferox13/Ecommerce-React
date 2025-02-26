@@ -1,14 +1,13 @@
 import React from "react";
-import { useProducts } from "../context/ProductContext";
+import { useProductsHome } from "../hooks/useProductsHome";
 import ProductCard from "../components/ProductCard";
 import { Product } from "../types";
 import Loader from "../components/Loader";
 
 const HomePage: React.FC = () => {
-  const { products, loading } = useProducts();
+  const { products, loading } = useProductsHome();
 
-  // Se asume que products es de tipo Product[]
-  const featuredProducts: Product[] = products.slice(0, 5);
+  const featuredProducts: Product[] = products;
 
   if (loading) {
     return <Loader />;
