@@ -57,7 +57,7 @@ const ProductDetail: React.FC = () => {
     );
 
     return (
-      <div className="container p-4 d-flex justify-content-center align-items-center">
+      <div className="container-fluid p-4 d-flex justify-content-center align-items-center">
         <ProductCard product={product} />
       </div>
     );

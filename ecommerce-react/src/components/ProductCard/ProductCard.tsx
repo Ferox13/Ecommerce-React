@@ -1,20 +1,23 @@
 import React from "react";
 import { Product } from "../../types";
+// import { useCart } from "../../context/CartContext";
 import "./ProductCard.css";
+
 interface ProductCardProps {
   product: Product;
+  customButton?: React.ReactNode;
 }
 
-const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
+const ProductCard: React.FC<ProductCardProps> = ({ product, customButton }) => {
   // const { addProduct } = useCart();
 
   return (
-    <div className="card customCard" >
+    <div className="card customCard">
       <img
         src={`http://localhost:5000${product.image}`}
         alt={product.title}
         className="card-img-top"
-        style={{ objectFit: "cover" }}
+        style={{ objectFit: "cover"}}
       />
       <div className="card-body d-flex flex-column p-2">
         <h6 className="card-title mb-1" style={{ fontSize: "1rem" }}>
@@ -23,12 +26,16 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         <p className="card-text mb-2" style={{ fontSize: "0.9rem" }}>
           ${product.price}
         </p>
-        <button
-          className="btn btn-success btn-sm mt-auto"
-          // onClick={() => addProduct(product)}
-        >
-          Añadir al carro
-        </button>
+        {customButton ? (
+          customButton
+        ) : (
+          <button
+            className="btn btn-success btn-sm mt-auto"
+            // onClick={() => addProduct(product)}
+          >
+            Añadir al carro
+          </button>
+        )}
       </div>
     </div>
   );
