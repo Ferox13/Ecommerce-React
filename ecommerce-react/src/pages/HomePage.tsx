@@ -17,7 +17,7 @@ const HomePage: React.FC = () => {
       style={{ textDecoration: "none", color: "inherit" }}
     >
       <img
-        src={`/cd${index + 1}.jpg`} // Se usará cd1.svg para el primer producto, cd2.svg para el segundo, etc.
+        src={`http://localhost:5000${product.image}`}
         alt={product.title}
         style={{
           width: "100%",
