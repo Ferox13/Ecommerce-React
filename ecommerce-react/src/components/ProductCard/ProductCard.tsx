@@ -1,27 +1,34 @@
-import { Link } from "react-router-dom";
-import {Product} from "../../types";
+import React from "react";
+import { Product } from "../../types";
+import "./ProductCard.css";
+interface ProductCardProps {
+  product: Product;
+}
 
-const ProductCard = ({ product }: { product: Product }) => {
-  console.log("🔗 Producto en ProductCard:", product);
+const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
+  // const { addProduct } = useCart();
 
   return (
-    <div className="card h-100">
+    <div className="card customCard" >
       <img
         src={`http://localhost:5000${product.image}`}
         alt={product.title}
         className="card-img-top"
-        style={{ height: "200px", objectFit: "cover" }}
+        style={{ objectFit: "cover" }}
       />
-      <div className="card-body d-flex flex-column">
-        <h5 className="card-title">{product.title}</h5>
-        <p className="card-text">${product.price}</p>
-        {product.id ? (
-          <Link to={`/product/${product.id}`} className="btn btn-primary mt-auto">
-            Ver detalles
-          </Link>
-        ) : (
-          <p className="text-danger">ID no disponible</p>
-        )}
+      <div className="card-body d-flex flex-column p-2">
+        <h6 className="card-title mb-1" style={{ fontSize: "1rem" }}>
+          {product.title}
+        </h6>
+        <p className="card-text mb-2" style={{ fontSize: "0.9rem" }}>
+          ${product.price}
+        </p>
+        <button
+          className="btn btn-success btn-sm mt-auto"
+          // onClick={() => addProduct(product)}
+        >
+          Añadir al carro
+        </button>
       </div>
     </div>
   );

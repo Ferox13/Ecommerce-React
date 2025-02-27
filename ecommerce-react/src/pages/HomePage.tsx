@@ -10,7 +10,7 @@ const HomePage: React.FC = () => {
   const { products, loading } = useProductsHome();
 
   // Creamos el array de imágenes del carrusel utilizando un número incrementado para cada imagen
-  const images2 = products.map((product: Product, index: number) => (
+  const images = products.map((product: Product, index: number) => (
     <Link
       key={product.id}
       to={`/product/${product.id}`}
@@ -36,7 +36,7 @@ const HomePage: React.FC = () => {
     <div className="container p-4">
       <div className="d-flex justify-content-center align-items-center" style={{ minHeight: "80vh" }}>
         <Carousel
-          items={images2}
+          items={images}
           startIndex={0}
           onChange={(currentIndex: unknown) => console.log(currentIndex)}
           showIndicators={false}

@@ -1,0 +1,7 @@
+.customCard {
+    width: 30% !important;
+    margin: 10px !important;
+    border-radius: 10px !important;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1) !important;
+    transition: all 0.3s ease !important;
+}

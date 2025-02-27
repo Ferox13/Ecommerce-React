@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { getProductById } from "../api/product";
 import { toast } from "react-toastify";
 import { Product } from "../types";
+import ProductCard from "../components/ProductCard";
 
 const ProductDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -55,24 +56,11 @@ const ProductDetail: React.FC = () => {
       </div>
     );
 
-  return (
-    <div className="container p-4">
-      <div className="card mb-4">
-        <img
-          src={`http://localhost:5000${product.image}`}
-          alt={product.title}
-          className="card-img-top img-fluid"
-        />
-        <div className="card-body">
-          <h1 className="card-title h3">{product.title}</h1>
-          <p className="card-text">
-            <strong>${product.price}</strong>
-          </p>
-          <p className="card-text">{product.description}</p>
-        </div>
+    return (
+      <div className="container p-4 d-flex justify-content-center align-items-center">
+        <ProductCard product={product} />
       </div>
-    </div>
-  );
+    );
 };
 
 export default ProductDetail;
