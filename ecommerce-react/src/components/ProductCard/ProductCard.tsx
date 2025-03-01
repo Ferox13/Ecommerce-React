@@ -13,19 +13,24 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, customButton }) => {
 
   return (
     <div className="card customCard">
+      {/* Imagen del producto */}
       <img
         src={`http://localhost:5000${product.image}`}
         alt={product.title}
         className="card-img-top"
-        style={{ objectFit: "cover"}}
+        style={{ objectFit: "cover", height: "180px" }}
       />
+      
+      {/* Cuerpo de la tarjeta */}
       <div className="card-body d-flex flex-column p-2">
-        <h6 className="card-title mb-1" style={{ fontSize: "1rem" }}>
+        <h6 className="card-title mb-1">
           {product.title}
         </h6>
-        <p className="card-text mb-2" style={{ fontSize: "0.9rem" }}>
+        <p className="card-text mb-2">
           ${product.price}
         </p>
+        
+        {/* Renderizado condicional del botón */}
         {customButton ? (
           customButton
         ) : (
