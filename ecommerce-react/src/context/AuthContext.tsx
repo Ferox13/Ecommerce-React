@@ -4,9 +4,10 @@ import { onAuthStateChanged, signOut, User } from "firebase/auth";
 
 // Definimos la interfaz para el valor del contexto de autenticación
 // Esta interfaz especifica qué datos y funciones estarán disponibles en el contexto
-interface AuthContextType {
+export interface AuthContextType {
   user: User | null; // El usuario autenticado o null si no hay sesión
   logout: () => Promise<void>; // Función para cerrar sesión
+  loading: boolean; // Add loading to the context type
 }
 
 // Creamos el contexto con tipado adecuado
@@ -46,9 +47,8 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
   // Proporciona el contexto a todos los componentes hijos
   return (
-    <AuthContext.Provider value={{ user, logout }}>
-      {/* Renderiza los hijos solo cuando la carga inicial ha terminado */}
-      {!loading && children}
+    <AuthContext.Provider value={{ user, logout, loading }}>
+      {children}
     </AuthContext.Provider>
   );
 };

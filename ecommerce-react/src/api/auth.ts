@@ -33,7 +33,7 @@ export const registerUser = async (
   );
   const user = userCredential.user;
 
-  // Perfil de usuario en Authentication de Firebase :)
+  // Perfil de usuario en Authen1tication de Firebase :)
   await updateProfile(user, { displayName: additionalData.username });
 
   await setDoc(doc(db, "users", user.uid), {
