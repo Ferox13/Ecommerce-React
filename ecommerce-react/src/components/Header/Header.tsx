@@ -1,14 +1,12 @@
-import { useState } from "react";
+import { useAuth } from "../../context/AuthContext";
 import { Link } from "react-router-dom";
-import { FiLogIn, FiLogOut } from "react-icons/fi";
+import { FiLogIn, FiLogOut, FiUserPlus } from "react-icons/fi";
 
 const Header: React.FC = () => {
-  // State to track if user is logged in
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const { user, logout } = useAuth();
 
-  // For demo purposes - toggle login status
-  const toggleLogin = () => {
-    setIsLoggedIn(!isLoggedIn);
+  const handleLogout = async () => {
+    await logout();
   };
 
   return (
@@ -38,18 +36,25 @@ const Header: React.FC = () => {
               </Link>
             </li>
           </ul>
-          
-          {/* Login/Logout icons */}
+
+          {/* Login/Logout and register */}
           <ul className="navbar-nav ms-auto">
-            {!isLoggedIn ? (
-              <li className="nav-item">
-                <Link className="nav-link" to="/login" onClick={toggleLogin}>
-                  <FiLogIn className="me-1" /> Iniciar sesión
-                </Link>
-              </li>
+            {!user ? (
+              <>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/login">
+                    <FiLogIn className="me-1" /> Iniciar sesión
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/register">
+                    <FiUserPlus className="me-1" /> Registrarse
+                  </Link>
+                </li>
+              </>
             ) : (
               <li className="nav-item">
-                <Link className="nav-link" to="/" onClick={toggleLogin}>
+                <Link className="nav-link" to="/" onClick={handleLogout}>
                   <FiLogOut className="me-1" /> Cerrar sesión
                 </Link>
               </li>
