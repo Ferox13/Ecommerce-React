@@ -40,3 +40,8 @@
 .read-the-docs {
   color: #888;
 } */
+
+body{
+  background-image: url("../public/bg.svg");
+  background-size: cover;
+}

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 500" preserveAspectRatio="none" style="background: black;">
+    <path 
+        d="M0,250 C150,100 350,400 500,250 C650,100 850,400 1000,250" 
+        stroke="#ff007f" 
+        stroke-width="2" 
+        fill="none" 
+        stroke-linecap="round" 
+        stroke-dasharray="500" 
+        stroke-dashoffset="1000">
+        <animate 
+            attributeName="stroke-dashoffset" 
+            from="1000" to="0" 
+            dur="4s" 
+            repeatCount="indefinite" />
+    </path>
+</svg>
