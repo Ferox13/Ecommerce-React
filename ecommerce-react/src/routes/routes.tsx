@@ -16,6 +16,7 @@ import { useAuth } from "../context/AuthContext";
 import CreatePanel from "../pages/CreatePanel";
 import AdminPanel from "../pages/AdminPanel";
 import EditPanel from "../pages/EditPanel";
+import Cart from "../pages/Cart";
 
 // Define types for route components
 
@@ -68,13 +69,20 @@ const AppRoutes: React.FC = () => {
               }
             />
             {/* Rutas privadas (requieren autenticación) */}
-
+            <Route
+              path="/cart"
+              element={
+                <PrivateRoute>
+                  <Cart />
+                </PrivateRoute>
+              }
+            />
             {/* Ruta de administrador (solo para el admin) */}
             <Route
               path="/create"
               element={
                 <AdminRoute>
-                  <CreatePanel />
+                  <CreatePanel /> 
                 </AdminRoute>
               }
             />
