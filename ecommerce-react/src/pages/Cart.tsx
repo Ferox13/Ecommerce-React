@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 export interface CartItem {
   id: string;
   title: string;
+  image: string;
   price: number;
   quantity: number;
 }
@@ -50,9 +51,22 @@ const Cart: React.FC = () => {
           <ul className="list-group mb-3">
             {cart.map((item) => (
               <li key={item.id} className="list-group-item d-flex justify-content-between align-items-center">
-                <div>
-                  <h6 className="my-0">{item.name}</h6>
-                  <small className="text-muted">${item.price} x {item.quantity}</small>
+                <div className="d-flex align-items-center">
+                  <img
+                    src={`http://localhost:5000${item.image}`}
+                    alt={item.title}
+                    style={{
+                      width: "50px",
+                      height: "50px",
+                      objectFit: "cover",
+                      marginRight: "10px",
+                      borderRadius: "5px"
+                    }}
+                  />
+                  <div>
+                    <h6 className="my-0">{item.title}</h6>
+                    <small className="text-muted">${item.price} x {item.quantity}</small>
+                  </div>
                 </div>
                 <div className="d-flex align-items-center">
                   <input

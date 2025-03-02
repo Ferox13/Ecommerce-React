@@ -15,7 +15,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, customButton }) => {
 
   const handleAddToCart = () => {
     if (product) {
-      addProduct({ ...product, name: product.title, quantity: 1 });
+      addProduct({ ...product, title: product.title, quantity: 1 });
       toast.success("Producto añadido al carrito");
     }
   };

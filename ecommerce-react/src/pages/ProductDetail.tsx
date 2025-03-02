@@ -4,18 +4,11 @@ import { getProductById } from "../api/product";
 import { toast } from "react-toastify";
 import { Product } from "../types";
 import ProductCard from "../components/ProductCard";
-import { useCart } from "../context/CartContext";
 
 const ProductDetail: React.FC = () => {
 
-  const { addProduct } = useCart();
 
-  const handleAddToCart = () => {
-    if (product) {
-      addProduct(product);
-      toast.success("Producto añadido al carrito");
-    }
-  }; 
+
 
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
