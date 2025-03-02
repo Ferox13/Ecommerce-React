@@ -13,6 +13,7 @@ import ProductList from "../pages/ProducList";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import { useAuth } from "../context/AuthContext";
+import AdminPanel from "../pages/AdminPanel";
 
 // Define types for route components
 
@@ -31,7 +32,11 @@ const PrivateRoute = ({ children }: { children: ReactNode }) => {
 
 const AdminRoute = ({ children }: { children: ReactNode }) => {
   const { user } = useAuth();
-  return user && user.email === "admin@admin.com" ? <>{children}</> : <Navigate to="/" />;
+  return user && user.email === "admin@admin.com" ? (
+    <>{children}</>
+  ) : (
+    <Navigate to="/" />
+  );
 };
 
 const AppRoutes: React.FC = () => {
@@ -63,7 +68,14 @@ const AppRoutes: React.FC = () => {
             {/* Rutas privadas (requieren autenticación) */}
 
             {/* Ruta de administrador (solo para el admin) */}
-
+            <Route
+              path="/admin"
+              element={
+                <AdminRoute>
+                  <AdminPanel />
+                </AdminRoute>
+              }
+            />
             {/* Ruta 404 */}
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
