@@ -1,6 +1,6 @@
 import { useAuth } from "../../context/AuthContext";
 import { Link } from "react-router-dom";
-import { FiLogIn, FiLogOut, FiUserPlus, FiSettings } from "react-icons/fi";
+import { FiLogIn, FiLogOut, FiUserPlus, FiSettings, FiPlus } from "react-icons/fi";
 
 const Header: React.FC = () => {
   const { user, logout } = useAuth();
@@ -45,11 +45,18 @@ const Header: React.FC = () => {
           {/* Login/Logout and register */}
           <ul className="navbar-nav ms-auto">
           {isAdmin && (
-              <li className="nav-item">
-                <Link className="nav-link" to="/admin">
-                  <FiSettings className="me-1" /> Administración
-                </Link>
-              </li>
+              <>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/admin">
+                    <FiSettings className="me-1" /> Administración
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/create">
+                    <FiPlus className="me-1" /> Crear Producto
+                  </Link>
+                </li>
+              </>
             )}
             {!user ? (
               <>
