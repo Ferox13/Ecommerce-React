@@ -1,6 +1,6 @@
 import { useAuth } from "../../context/AuthContext";
 import { Link } from "react-router-dom";
-import { FiLogIn, FiLogOut, FiUserPlus, FiSettings, FiPlus } from "react-icons/fi";
+import { FiLogIn, FiLogOut, FiUserPlus, FiSettings, FiPlus, FiShoppingCart } from "react-icons/fi";
 
 const Header: React.FC = () => {
   const { user, logout } = useAuth();
@@ -39,12 +39,7 @@ const Header: React.FC = () => {
               </Link>
             </li>
             {/* Panel de Administrador - Solo visible para el admin */}
-            
-          </ul>
-
-          {/* Login/Logout and register */}
-          <ul className="navbar-nav ms-auto">
-          {isAdmin && (
+            {isAdmin && (
               <>
                 <li className="nav-item">
                   <Link className="nav-link" to="/admin">
@@ -58,6 +53,10 @@ const Header: React.FC = () => {
                 </li>
               </>
             )}
+          </ul>
+
+          {/* Login/Logout, register and Cart */}
+          <ul className="navbar-nav ms-auto">
             {!user ? (
               <>
                 <li className="nav-item">
@@ -72,11 +71,18 @@ const Header: React.FC = () => {
                 </li>
               </>
             ) : (
-              <li className="nav-item">
-                <Link className="nav-link" to="/" onClick={handleLogout}>
-                  <FiLogOut className="me-1" /> Cerrar sesión
-                </Link>
-              </li>
+              <>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/cart">
+                    <FiShoppingCart className="me-1" /> Carrito
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/" onClick={handleLogout}>
+                    <FiLogOut className="me-1" /> Cerrar sesión
+                  </Link>
+                </li>
+              </>
             )}
           </ul>
         </div>
