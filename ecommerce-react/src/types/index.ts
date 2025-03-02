@@ -1,5 +1,5 @@
 export interface Product {
-  id: number;
+  id: string;
   title: string;
   price: number;
   image: string;
@@ -9,4 +9,7 @@ export interface Product {
 export interface ProductContextType {
   products: Product[];
   loading: boolean;
+  addNewProduct: (newProduct: Omit<Product, "id">) => Promise<void>;
+  updateProduct: (id: string, updatedData: Partial<Omit<Product, "id">>) => Promise<void>;
+  deleteProduct: (id: string) => Promise<void>;
 }
