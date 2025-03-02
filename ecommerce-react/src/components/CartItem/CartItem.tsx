@@ -1,39 +1,58 @@
 import React from 'react';
 import { useCart } from "../../context/CartContext";
 
-// Define item type
 interface CartItemProps {
   item: {
     id: string;
-    name: string;
+    title: string;
     price: number;
     quantity: number;
-    [key: string]: any; // For any additional properties
+    image?: string; // Optional image for the product
+    [key: string]: unknown; // For any additional properties
   };
 }
 
 const CartItem: React.FC<CartItemProps> = ({ item }) => {
   const { updateQuantity, removeProduct } = useCart();
 
+  console.log("CartItem:", item);
+
   return (
-    <li className="list-group-item d-flex justify-content-between align-items-center border-bottom py-2">
-      <span>{item.title} - ${item.price}</span>
-      <input
-        type="number"
-        value={item.quantity}
-        min="1"
-        onChange={(e) => updateQuantity(item.id, parseInt(e.target.value))}
-        className="form-control mx-2"
-        style={{ width: "80px" }}
-      />
-      <button
-        onClick={() => removeProduct(item.id)}
-        className="btn btn-sm btn-danger"
-        aria-label="Remove item"
-      >
-        <span>&times;</span>
-      </button>
-    </li>
+    <div className="card mb-3" style={{ maxWidth: "540px" }}>
+      <div className="row g-0">
+        <div className="col-md-4">
+          <img
+            src={`http://localhost:5000${item.image}`}
+            className="img-fluid rounded-start"
+            alt={item.title}
+          />
+        </div>
+        <div className="col-md-8">
+          <div className="card-body">
+            <h5 className="card-title">{item.title}</h5>
+            <p className="card-text">Precio: ${item.price}</p>
+            <div className="d-flex align-items-center">
+              <input
+                type="number"
+                value={item.quantity}
+                min="1"
+                onChange={(e) =>
+                  updateQuantity(item.id, parseInt(e.target.value))
+                }
+                className="form-control me-2"
+                style={{ width: "80px" }}
+              />
+              <button
+                onClick={() => removeProduct(item.id)}
+                className="btn btn-danger btn-sm"
+              >
+                &times; Eliminar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 };
 

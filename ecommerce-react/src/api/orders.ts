@@ -6,14 +6,14 @@ interface CartItem {
   id: string;
   name: string;
   quantity: number;
-  [key: string]: any; // Additional product properties
+  [key: string]: unknown; // Additional product properties
 }
 
 interface OrderData {
   userId: string;
   items: CartItem[];
   createdAt: Date;
-  [key: string]: any; // Additional order properties that might be added
+  [key: string]: unknown; // Additional order properties that might be added
 }
 
 interface Order extends OrderData {
@@ -30,8 +30,8 @@ export const createOrder = async (userId: string, cartItems: CartItem[]): Promis
         };
         const docRef = await addDoc(collection(db, "orders"), orderData);
         return docRef.id;
-    } catch (error: any) {
-        throw error.message;
+    } catch (error: unknown) {
+        throw new Error((error as Error).message);
     }
 };
 

@@ -1,7 +1,6 @@
 import { createContext, useContext, useState, useEffect, ReactNode } from "react";
 import { useAuth } from "./AuthContext";
 import { getCartItems, addToCart, updateCartItem, removeFromCart } from "../api/cart";
-import { Product } from "../types";
 
 // Define interfaces for our types
 interface CartItem {
@@ -10,12 +9,11 @@ interface CartItem {
   price: number;
   quantity: number;
   image?: string;
-  // Add other properties as needed
 }
 
 interface CartContextType {
   cart: CartItem[];
-  addProduct: (product: Product) => Promise<void>;
+  addProduct: (product: CartItem) => Promise<void>;
   updateQuantity: (productId: string, quantity: number) => Promise<void>;
   removeProduct: (productId: string) => Promise<void>;
 }

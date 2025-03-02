@@ -1,11 +1,8 @@
 import { db } from "./firebaseConfig";
 import { doc, setDoc, updateDoc, deleteDoc, getDocs, collection } from "firebase/firestore";
+import { Product } from "../types";
 
-// Define interfaces
-interface Product {
-  id: string;
-  [key: string]: any; // Additional product properties
-}
+
 
 interface CartItem extends Product {
   quantity: number;
@@ -16,8 +13,11 @@ export const addToCart = async (userId: string, product: Product): Promise<void>
   try {
     const cartItemRef = doc(db, `carts/${userId}/items`, product.id);
     await setDoc(cartItemRef, { ...product, quantity: 1 }, { merge: true });
-  } catch (error: any) {
-    throw error.message;
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      throw error.message;
+    }
+    throw String(error);
   }
 };
 

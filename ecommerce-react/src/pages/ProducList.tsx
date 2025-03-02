@@ -13,6 +13,7 @@ const ProductList: React.FC = () => {
   useEffect(() => {
     const fetchData = async () => {
       const prods = await getProducts();
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       setProducts(prods.map((product: any) => ({
         id: product.id,
         title: product.title || "Default Title",
