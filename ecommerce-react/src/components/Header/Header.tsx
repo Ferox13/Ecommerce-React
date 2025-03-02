@@ -1,6 +1,6 @@
 import { useAuth } from "../../context/AuthContext";
 import { Link } from "react-router-dom";
-import { FiLogIn, FiLogOut, FiUserPlus } from "react-icons/fi";
+import { FiLogIn, FiLogOut, FiUserPlus, FiSettings } from "react-icons/fi";
 
 const Header: React.FC = () => {
   const { user, logout } = useAuth();
@@ -9,9 +9,12 @@ const Header: React.FC = () => {
     await logout();
   };
 
+  // Verificar si el usuario es administrador
+  const isAdmin = user && user.email === "admin@admin.com";
+
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light w-100">
-      <div className="container">
+      <div className="container-fluid">
         <Link className="navbar-brand" to="/">
           Mi Tienda
         </Link>
@@ -35,10 +38,19 @@ const Header: React.FC = () => {
                 Productos
               </Link>
             </li>
+            {/* Panel de Administrador - Solo visible para el admin */}
+            
           </ul>
 
           {/* Login/Logout and register */}
           <ul className="navbar-nav ms-auto">
+          {isAdmin && (
+              <li className="nav-item">
+                <Link className="nav-link" to="/admin">
+                  <FiSettings className="me-1" /> Administración
+                </Link>
+              </li>
+            )}
             {!user ? (
               <>
                 <li className="nav-item">

@@ -13,7 +13,9 @@ import ProductList from "../pages/ProducList";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import { useAuth } from "../context/AuthContext";
+import CreatePanel from "../pages/CreatePanel";
 import AdminPanel from "../pages/AdminPanel";
+import EditPanel from "../pages/EditPanel";
 
 // Define types for route components
 
@@ -69,10 +71,26 @@ const AppRoutes: React.FC = () => {
 
             {/* Ruta de administrador (solo para el admin) */}
             <Route
+              path="/create"
+              element={
+                <AdminRoute>
+                  <CreatePanel />
+                </AdminRoute>
+              }
+            />
+            <Route
               path="/admin"
               element={
                 <AdminRoute>
                   <AdminPanel />
+                </AdminRoute>
+              }
+            />
+            <Route
+              path="/edit/:id"
+              element={
+                <AdminRoute>
+                  <EditPanel />
                 </AdminRoute>
               }
             />
