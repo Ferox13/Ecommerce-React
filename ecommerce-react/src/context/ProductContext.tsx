@@ -64,7 +64,7 @@ export const ProductProvider: React.FC<ProductProviderProps> = ({
       setProducts(
         products.map((p) => (p.id === id ? { ...p, ...updatedData } : p))
       );
-      toast.success("Producto actualizado correctamente");
+      // toast.success("Producto actualizado correctamente");
     } catch (error) {
       console.error("❌ Error al actualizar producto:", error);
       toast.error("Error al actualizar producto");

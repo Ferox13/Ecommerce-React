@@ -1,15 +1,7 @@
 import { createContext, useContext, useState, useEffect, ReactNode } from "react";
 import { useAuth } from "./AuthContext";
 import { getCartItems, addToCart, updateCartItem, removeFromCart } from "../api/cart";
-
-// Define interfaces for our types
-interface CartItem {
-  id: string;
-  title: string;
-  price: number;
-  quantity: number;
-  image?: string;
-}
+import { CartItem } from "../types";
 
 interface CartContextType {
   cart: CartItem[];
@@ -37,7 +29,8 @@ export const CartProvider = ({ children }: CartProviderProps): JSX.Element => {
 
   const addProduct = async (product: CartItem): Promise<void> => {
     if (!user) return;
-    await addToCart(user.uid, product);
+    const validProduct = { ...product, image: product.image ?? "" };
+    await addToCart(user.uid, validProduct);
     const items = await getCartItems(user.uid);
     setCart(items as unknown as CartItem[]);
   };

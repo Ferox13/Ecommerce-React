@@ -13,3 +13,12 @@ export interface ProductContextType {
   updateProduct: (id: string, updatedData: Partial<Omit<Product, "id">>) => Promise<void>;
   deleteProduct: (id: string) => Promise<void>;
 }
+
+export interface CartItem {
+  id: string;
+  title: string;
+  price: number;
+  description: string;
+  quantity: number;
+  image?: string;
+}

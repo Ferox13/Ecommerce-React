@@ -4,15 +4,6 @@ import { toast } from "react-toastify";
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 
-// Define types for cart items
-export interface CartItem {
-  id: string;
-  title: string;
-  image: string;
-  price: number;
-  quantity: number;
-}
-
 const Cart: React.FC = () => {
   const { cart, updateQuantity, removeProduct } = useCart();
   const { user } = useAuth();
