@@ -13,7 +13,13 @@ const ProductList: React.FC = () => {
   useEffect(() => {
     const fetchData = async () => {
       const prods = await getProducts();
-      setProducts(prods);
+      setProducts(prods.map((product: any) => ({
+        id: product.id,
+        title: product.title || "Default Title",
+        price: product.price || 0,
+        image: product.image || "",
+        description: product.description || ""
+      })));
       setLoading(false);
     };
 

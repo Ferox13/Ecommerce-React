@@ -10,7 +10,7 @@ const HomePage: React.FC = () => {
   const { products, loading } = useProductsHome();
 
   // Creamos el array de imágenes del carrusel utilizando un número incrementado para cada imagen
-  const images = products.map((product: Product, index: number) => (
+  const images = products.map((product: Product) => (
     <Link
       key={product.id}
       to={`/product/${product.id}`}
