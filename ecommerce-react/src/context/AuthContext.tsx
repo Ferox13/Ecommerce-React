@@ -1,11 +1,7 @@
 import React, { createContext, useEffect, useState, ReactNode } from "react";
 import { auth } from "../api/firebaseConfig";
 import { onAuthStateChanged, signOut, User } from "firebase/auth";
-
-interface AuthContextType {
-    user: User | null;
-    logout: () => Promise<void>;
-}
+import { AuthContextType } from "../types";
 
 export const AuthContext = createContext<AuthContextType | undefined>(undefined);
 

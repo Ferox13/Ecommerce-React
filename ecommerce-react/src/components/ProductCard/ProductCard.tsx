@@ -7,10 +7,10 @@ import { toast } from "react-toastify";
 interface ProductCardProps {
   product: Product;
   customButton?: React.ReactNode;
+  showDescription?: boolean;
 }
 
-const ProductCard: React.FC<ProductCardProps> = ({ product, customButton }) => {
-  // const { addProduct } = useCart();
+const ProductCard: React.FC<ProductCardProps> = ({ product, customButton, showDescription }) => {
   const { addProduct } = useCart();
 
   const handleAddToCart = () => {
@@ -19,6 +19,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, customButton }) => {
       toast.success("Producto añadido al carrito");
     }
   };
+
   return (
     <div className="card customCard">
       {/* Imagen del producto */}
@@ -33,6 +34,11 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, customButton }) => {
       <div className="card-body d-flex flex-column p-2">
         <h6 className="card-title mb-1">{product.title}</h6>
         <p className="card-text mb-2">${product.price}</p>
+        
+        {/* Mostrar descripción solo si showDescription es true */}
+        {showDescription && product.description && (
+          <p className="card-text mb-2">{product.description}</p>
+        )}
 
         {/* Renderizado condicional del botón */}
         {customButton ? (
@@ -40,7 +46,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, customButton }) => {
         ) : (
           <button
             className="btn btn-success btn-sm mt-auto"
-            onClick={() => handleAddToCart()}
+            onClick={handleAddToCart}
           >
             Añadir al carro
           </button>

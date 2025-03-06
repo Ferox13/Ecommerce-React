@@ -5,7 +5,7 @@ export interface Product {
   title: string;
   price: number;
   image: string;
-  description: string;
+  description?: string;
 }
 
 export interface ProductContextType {
@@ -20,7 +20,7 @@ export interface CartItem {
   id: string;
   title: string;
   price: number;
-  description: string;
+  description?: string;
   quantity: number;
   image?: string;
 }
