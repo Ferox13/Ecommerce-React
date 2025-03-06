@@ -1,6 +1,7 @@
 import React from "react";
 import { Product } from "../../types";
 import { useCart } from "../../hooks/useCart";
+import { useAuth } from "../../hooks/useAuth";
 import "./ProductCard.css";
 import { toast } from "react-toastify";
 
@@ -12,12 +13,15 @@ interface ProductCardProps {
 
 const ProductCard: React.FC<ProductCardProps> = ({ product, customButton, showDescription }) => {
   const { addProduct } = useCart();
+  const { user } = useAuth();
 
   const handleAddToCart = () => {
-    if (product) {
-      addProduct({ ...product, title: product.title, quantity: 1 });
-      toast.success("Producto añadido al carrito");
+    if (!user) {
+      toast.error("Debes iniciar sesión para añadir productos al carrito");
+      return;
     }
+    addProduct({ ...product, title: product.title, quantity: 1 });
+    toast.success("Producto añadido al carrito");
   };
 
   return (

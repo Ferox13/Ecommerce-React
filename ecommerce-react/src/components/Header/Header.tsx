@@ -1,6 +1,15 @@
 import { useAuth } from "../../hooks/useAuth";
 import { Link } from "react-router-dom";
-import { FiLogIn, FiLogOut, FiUserPlus, FiSettings, FiPlus, FiShoppingCart } from "react-icons/fi";
+import "./header.css";
+
+import {
+  FiLogIn,
+  FiLogOut,
+  FiUserPlus,
+  FiSettings,
+  FiPlus,
+  FiShoppingCart,
+} from "react-icons/fi";
 
 const Header: React.FC = () => {
   const { user, logout } = useAuth();
@@ -13,7 +22,7 @@ const Header: React.FC = () => {
   const isAdmin = user && user.email === "admin@admin.com";
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light w-100">
+    <nav className="navbar navbar-expand-lg navbar-light bg-dark  w-100 text-light">
       <div className="container-fluid">
         <Link className="navbar-brand" to="/">
           Mi Tienda
