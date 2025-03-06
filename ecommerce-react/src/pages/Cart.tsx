@@ -1,7 +1,7 @@
 import React from "react";
-import { useCart } from "../context/CartContext";
+import { useCart } from "../hooks/useCart";
 import { toast } from "react-toastify";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 
 const Cart: React.FC = () => {

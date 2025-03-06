@@ -12,7 +12,7 @@ import Footer from "../components/Footer";
 import ProductList from "../pages/ProducList";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../hooks/useAuth";
 import CreatePanel from "../pages/CreatePanel";
 import AdminPanel from "../pages/AdminPanel";
 import EditPanel from "../pages/EditPanel";
@@ -21,9 +21,7 @@ import Cart from "../pages/Cart";
 // Define types for route components
 
 const AuthRoute = ({ children }: { children: ReactNode }) => {
-  const { user, loading } = useAuth();
-
-  if (loading) return null; // Espera hasta que Firebase verifique la autenticación
+  const { user } = useAuth();
 
   return user ? <Navigate to="/" /> : <>{children}</>;
 };

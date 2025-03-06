@@ -2,27 +2,8 @@ import { useState, ChangeEvent, FormEvent } from "react";
 import { registerUser } from "../api/auth";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { FormData,FormErrors } from "../types";
 
-// Define interfaces for form data and errors
-interface FormData {
-  username: string;
-  firstName: string;
-  lastName: string;
-  email: string;
-  birthDate: string;
-  password: string;
-  confirmPassword: string;
-}
-
-interface FormErrors {
-  username?: string;
-  firstName?: string;
-  lastName?: string;
-  email?: string;
-  birthDate?: string;
-  password?: string;
-  confirmPassword?: string;
-}
 
 const Register = (): JSX.Element => {
   const [formData, setFormData] = useState<FormData>({

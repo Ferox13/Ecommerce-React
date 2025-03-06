@@ -7,9 +7,6 @@ import ProductCard from "../components/ProductCard";
 
 const ProductDetail: React.FC = () => {
 
-
-
-
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
 

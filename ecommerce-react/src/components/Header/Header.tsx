@@ -1,4 +1,4 @@
-import { useAuth } from "../../context/AuthContext";
+import { useAuth } from "../../hooks/useAuth";
 import { Link } from "react-router-dom";
 import { FiLogIn, FiLogOut, FiUserPlus, FiSettings, FiPlus, FiShoppingCart } from "react-icons/fi";
 
