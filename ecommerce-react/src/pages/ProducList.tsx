@@ -57,6 +57,7 @@ const ProductList: React.FC = () => {
                     onClick={() => navigate(`/product/${product.id}`)}
                     aria-label="Ver detalles"
                     style={{
+                      borderRadius: "4px",
                       transition: "background-color 0.3s ease"
                     }}
                     onMouseOver={(e) => e.currentTarget.style.backgroundColor = "#e91e63"}
