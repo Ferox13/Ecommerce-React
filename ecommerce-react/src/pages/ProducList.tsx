@@ -32,8 +32,16 @@ const ProductList: React.FC = () => {
 
   return (
     <div className="container">
-      <h1 className="mb-4 text-center text-white">Todos los Productos</h1>
-      <div className="row justify-content-center align-items-center">
+  <h1
+        className="py-4 text-center text-white fw-light border-bottom border-white border-opacity-25 mb-4"
+        style={{
+          letterSpacing: "1.5px",
+          fontSize: "2.2rem",
+          textShadow: "0px 2px 4px rgba(0,0,0,0.2)",
+        }}
+      >
+        Todos los productos
+      </h1>{" "}      <div className="row justify-content-center align-items-center">
         {products.map((product) => (
           <div 
             key={product.id} 
@@ -48,6 +56,11 @@ const ProductList: React.FC = () => {
                     className="btn btn-outline-secondary border-0 d-flex align-items-center justify-content-center gap-2"
                     onClick={() => navigate(`/product/${product.id}`)}
                     aria-label="Ver detalles"
+                    style={{
+                      transition: "background-color 0.3s ease"
+                    }}
+                    onMouseOver={(e) => e.currentTarget.style.backgroundColor = "#e91e63"}
+                    onMouseOut={(e) => e.currentTarget.style.backgroundColor = ""}
                   >
                     <Eye size={18} /> <span className="small">Detalles</span>
                   </button>
