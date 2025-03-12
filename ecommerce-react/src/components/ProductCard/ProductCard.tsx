@@ -54,7 +54,6 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, customButton, showDe
             onClick={handleAddToCart}
             style={{
               
-              border: "1px solid #e0e0e0",
               borderRadius: "4px",
               padding: "6px 12px",
               backgroundColor: "transparent",
@@ -62,8 +61,8 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, customButton, showDe
               transition: "all 0.2s ease"
             }}
             onMouseOver={(e) => {
-              e.currentTarget.style.backgroundColor = "#f8f9fa";
-              e.currentTarget.style.color = "#000";
+              e.currentTarget.style.backgroundColor = "#e91e63";
+              e.currentTarget.style.color = "#fff";
 
             }}
             onMouseOut={(e) => {
