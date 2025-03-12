@@ -10,7 +10,6 @@ import {
   Settings,
   Plus,
   ShoppingCart,
-  Disc,
 } from "lucide-react";
 
 const Header: React.FC = () => {
@@ -26,8 +25,8 @@ const Header: React.FC = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-dark w-100 text-light">
       <div className="container-fluid">
-      <Disc size={20} />
-      <span className="text-xl font-bold text-white">VinylVault</span>
+      <img src="../../../public/vynil.svg" alt="VinylVault logo" width="20" height="20"  className="me-1"/>   
+         <span className="text-xl font-bold text-white me-3">VinylVault</span>
         <button
           className="navbar-toggler"
           type="button"
