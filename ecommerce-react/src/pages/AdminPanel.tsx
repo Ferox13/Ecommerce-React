@@ -16,13 +16,15 @@ const AdminPanel: React.FC = () => {
     try {
       const prods = await getProducts();
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      setProducts(prods.map((product: any) => ({
-        id: product.id,
-        title: product.title || "Default Title",
-        price: product.price || 0,
-        image: product.image || "",
-        description: product.description || ""
-      })));
+      setProducts(
+        prods.map((product: any) => ({
+          id: product.id,
+          title: product.title || "Default Title",
+          price: product.price || 0,
+          image: product.image || "",
+          description: product.description || "",
+        }))
+      );
     } catch (error) {
       toast.error("Error al cargar productos");
       console.error("Error al cargar productos:", error);
@@ -41,7 +43,7 @@ const AdminPanel: React.FC = () => {
         await deleteProduct(id);
         toast.success("Producto eliminado correctamente");
         // Actualizar la lista de productos
-        setProducts(products.filter(product => product.id !== id));
+        setProducts(products.filter((product) => product.id !== id));
       } catch (error) {
         toast.error("Error al eliminar el producto");
         console.error("Error al eliminar producto:", error);
@@ -57,10 +59,22 @@ const AdminPanel: React.FC = () => {
 
   return (
     <div className="container d-flex flex-column align-items-center justify-content-center">
-      <h1 className="pb-5 pt-5 text-center text-white">Administración de Productos</h1>
+      <h1
+        className="py-4 text-center text-white fw-light border-bottom border-white border-opacity-25 mb-4"
+        style={{
+          letterSpacing: "1.5px",
+          fontSize: "2.2rem",
+          textShadow: "0px 2px 4px rgba(0,0,0,0.2)",
+        }}
+      >
+        Administración de Productos
+      </h1>{" "}
       <div className="row justify-content-center align-items-center">
         {products.map((product) => (
-          <div key={product.id} className="col-12 col-md-4 mb-4 d-flex justify-content-center align-items-center flex-wrap">
+          <div
+            key={product.id}
+            className="col-12 col-md-4 mb-4 d-flex justify-content-center align-items-center flex-wrap"
+          >
             <ProductCard
               product={product}
               customButton={
@@ -85,7 +99,8 @@ const AdminPanel: React.FC = () => {
                       onClick={() => handleDeleteProduct(product.id)}
                       aria-label="Eliminar producto"
                     >
-                      <Trash2 size={18} /> <span className="small">Eliminar</span>
+                      <Trash2 size={18} />{" "}
+                      <span className="small">Eliminar</span>
                     </button>
                   </div>
                 </div>
