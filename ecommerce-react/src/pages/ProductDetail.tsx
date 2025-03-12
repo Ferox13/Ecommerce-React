@@ -59,8 +59,16 @@ const ProductDetail: React.FC = () => {
     );
 
   return (
-    <div className="container-fluid p-4 d-flex justify-content-center align-items-center">
-      <ProductCard product={product} showDescription={true} />
+    <div className="container-fluid py-4 min-vh-100 d-flex justify-content-center align-items-center">
+      <div className="product-detail-wrapper" style={{ maxWidth: "1000px", width: "100%" }}>
+        <div className="enlarged-product-card" style={{ 
+          transform: "scale(1.2)",
+          transformOrigin: "center center",
+          margin: "2rem auto"
+        }}>
+          <ProductCard product={product} showDescription={true} />
+        </div>
+      </div>
     </div>
   );
 };

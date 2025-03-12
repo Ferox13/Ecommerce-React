@@ -5,6 +5,7 @@ import ProductCard from "../components/ProductCard/ProductCard";
 import Loader from "../components/Loader";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { Eye, Pencil, Trash2 } from "lucide-react"; // Importar los iconos adicionales
 
 const AdminPanel: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -55,8 +56,8 @@ const AdminPanel: React.FC = () => {
   if (loading) return <Loader />;
 
   return (
-    <div className="container">
-      <h1 className="mb-4 text-center">Administración de Productos</h1>
+    <div className="container d-flex flex-column align-items-center justify-content-center">
+      <h1 className="pb-5 pt-5 text-center text-white">Administración de Productos</h1>
       <div className="row justify-content-center align-items-center">
         {products.map((product) => (
           <div key={product.id} className="col-12 col-md-4 mb-4 d-flex justify-content-center align-items-center flex-wrap">
@@ -65,23 +66,26 @@ const AdminPanel: React.FC = () => {
               customButton={
                 <div className="d-flex flex-column gap-2 w-100">
                   <button
-                    className="btn btn-primary w-100"
+                    className="btn btn-outline-secondary border-0 d-flex align-items-center justify-content-center gap-2"
                     onClick={() => navigate(`/product/${product.id}`)}
+                    aria-label="Ver detalles"
                   >
-                    Ver detalles
+                    <Eye size={18} /> <span className="small">Detalles</span>
                   </button>
-                  <div className="d-flex justify-content-between gap-2">
+                  <div className="d-flex justify-center gap-3 mt-2">
                     <button
-                      className="btn btn-warning flex-grow-1"
+                      className="btn btn-sm btn-outline-secondary border-0 text-warning"
                       onClick={() => handleEditProduct(product.id)}
+                      aria-label="Editar producto"
                     >
-                      Editar
+                      <Pencil size={18} /> <span className="small">Editar</span>
                     </button>
                     <button
-                      className="btn btn-danger flex-grow-1"
+                      className="btn btn-sm btn-outline-secondary border-0 text-danger"
                       onClick={() => handleDeleteProduct(product.id)}
+                      aria-label="Eliminar producto"
                     >
-                      Eliminar
+                      <Trash2 size={18} /> <span className="small">Eliminar</span>
                     </button>
                   </div>
                 </div>
