@@ -4,6 +4,7 @@ import { useCart } from "../../hooks/useCart";
 import { useAuth } from "../../hooks/useAuth";
 import "./ProductCard.css";
 import { toast } from "react-toastify";
+import { ShoppingCart } from "lucide-react";
 
 interface ProductCardProps {
   product: Product;
@@ -49,10 +50,30 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, customButton, showDe
           customButton
         ) : (
           <button
-            className="btn btn-success btn-sm mt-auto"
+            className="btn btn-outline-light btn-sm mt-auto d-flex align-items-center justify-content-center gap-1"
             onClick={handleAddToCart}
+            style={{
+              
+              border: "1px solid #e0e0e0",
+              borderRadius: "4px",
+              padding: "6px 12px",
+              backgroundColor: "transparent",
+              color: "#fff",
+              transition: "all 0.2s ease"
+            }}
+            onMouseOver={(e) => {
+              e.currentTarget.style.backgroundColor = "#f8f9fa";
+              e.currentTarget.style.color = "#000";
+
+            }}
+            onMouseOut={(e) => {
+              e.currentTarget.style.backgroundColor = "transparent";
+              e.currentTarget.style.color = "#fff";
+
+            }}
           >
-            Añadir al carro
+            <ShoppingCart size={16} />
+            <span>Añadir</span>
           </button>
         )}
       </div>

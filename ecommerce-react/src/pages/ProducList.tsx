@@ -4,6 +4,7 @@ import { Product } from "../types";
 import ProductCard from "../components/ProductCard/ProductCard";
 import Loader from "../components/Loader";
 import { useNavigate } from "react-router-dom";
+import { Eye } from "lucide-react"; // Import the Eye icon from Lucide
 
 const ProductList: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -39,10 +40,11 @@ const ProductList: React.FC = () => {
               product={product}
               customButton={
                 <button
-                  className="btn btn-primary w-100"
+                  className="btn btn-outline-secondary border-0 d-flex align-items-center gap-2"
                   onClick={() => navigate(`/product/${product.id}`)}
+                  aria-label="Ver detalles"
                 >
-                  Ver detalles
+                  <Eye size={18} /> <span className="small">Detalles</span>
                 </button>
               }
             />
