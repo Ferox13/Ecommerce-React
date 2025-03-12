@@ -17,7 +17,7 @@ export interface AdditionalData {
   username: string;
   firstName: string;
   lastName: string;
-  birthDate: string; // Ajusta el tipo si es necesario
+  birthDate: string;
 }
 
 // Registro de usuario con correo y contraseña
@@ -33,7 +33,7 @@ export const registerUser = async (
   );
   const user = userCredential.user;
 
-  // Perfil de usuario en Authen1tication de Firebase :)
+  // Perfil de usuario en Authen1tication de Firebase
   await updateProfile(user, { displayName: additionalData.username });
 
   await setDoc(doc(db, "users", user.uid), {

@@ -15,7 +15,7 @@ const ProductDetail: React.FC = () => {
 
   useEffect(() => {
     if (!id) {
-      console.error("⛔ ID del producto no válido.");
+      console.error("ID del producto no válido.");
       toast.error("ID del producto no válido.");
       navigate("/");
       return;

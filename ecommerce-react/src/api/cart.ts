@@ -2,8 +2,6 @@ import { db } from "./firebaseConfig";
 import { doc, setDoc, updateDoc, deleteDoc, getDocs, collection } from "firebase/firestore";
 import { Product } from "../types";
 
-
-
 interface CartItem extends Product {
   quantity: number;
 }

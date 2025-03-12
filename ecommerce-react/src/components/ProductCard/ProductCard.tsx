@@ -37,7 +37,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, customButton, showDe
       {/* Cuerpo de la tarjeta */}
       <div className="card-body d-flex flex-column p-2">
         <h6 className="card-title mb-1">{product.title}</h6>
-        <p className="card-text mb-2">${product.price}</p>
+        <p className="card-text mb-2 greenColor">${product.price}</p>
         
         {/* Mostrar descripción solo si showDescription es true */}
         {showDescription && product.description && (

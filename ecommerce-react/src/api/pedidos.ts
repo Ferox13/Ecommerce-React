@@ -6,21 +6,21 @@ interface CartItem {
   id: string;
   name: string;
   quantity: number;
-  [key: string]: unknown; // Additional product properties
+  [key: string]: unknown; 
 }
 
 interface OrderData {
   userId: string;
   items: CartItem[];
   createdAt: Date;
-  [key: string]: unknown; // Additional order properties that might be added
+  [key: string]: unknown; 
 }
 
 interface Order extends OrderData {
   id: string;
 }
 
-// Crear una orden
+// Crear una pedido
 export const createOrder = async (userId: string, cartItems: CartItem[]): Promise<string> => {
     try {
         const orderData: OrderData = {
@@ -35,7 +35,7 @@ export const createOrder = async (userId: string, cartItems: CartItem[]): Promis
     }
 };
 
-// Obtener todas las órdenes del usuario
+// Obtener todas los pedidos del usuario
 export const getUserOrders = async (userId: string): Promise<Order[]> => {
     const querySnapshot = await getDocs(collection(db, "orders"));
     return querySnapshot.docs
@@ -50,6 +50,6 @@ export const getOrderById = async (orderId: string): Promise<Order> => {
     if (orderSnap.exists()) {
         return { id: orderSnap.id, ...orderSnap.data() } as Order;
     } else {
-        throw new Error("Orden no encontrada");
+        throw new Error("Pedido no encontrada");
     }
 };
