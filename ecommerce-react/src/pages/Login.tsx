@@ -39,8 +39,15 @@ const Login: FC = () => {
   };
 
   return (
-    <div className="d-flex flex-column align-items-center justify-content-center min-vh-100 bg-dark text-light">
-   <h1
+    <div
+      className="d-flex flex-column align-items-center justify-content-center min-vh-100 text-light"
+      style={{
+        backgroundImage: "url('/bg.svg')",
+        backgroundSize: "cover",
+        backgroundPosition: "center"
+      }}
+    >
+      <h1
         className="py-4 text-center text-white fw-light border-bottom border-white border-opacity-25 mb-4"
         style={{
           letterSpacing: "1.5px",
@@ -48,13 +55,20 @@ const Login: FC = () => {
         }}
       >
         Iniciar sesión
-      </h1>{" "}      <form onSubmit={handleLogin} className="d-flex flex-column gap-3 mt-3 w-100" style={{ maxWidth: "320px" }}>
+      </h1>{" "}
+      <form
+        onSubmit={handleLogin}
+        className="d-flex flex-column gap-3 mt-3 w-100"
+        style={{ maxWidth: "320px" }}
+      >
         <div className="form-group">
           <input
             type="email"
             placeholder="Correo"
             value={email}
-            onChange={(e: ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
+            onChange={(e: ChangeEvent<HTMLInputElement>) =>
+              setEmail(e.target.value)
+            }
             required
             className="form-control bg-secondary text-light border-0"
           />
@@ -64,7 +78,9 @@ const Login: FC = () => {
             type="password"
             placeholder="Contraseña"
             value={password}
-            onChange={(e: ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
+            onChange={(e: ChangeEvent<HTMLInputElement>) =>
+              setPassword(e.target.value)
+            }
             required
             className="form-control bg-secondary text-light border-0"
           />

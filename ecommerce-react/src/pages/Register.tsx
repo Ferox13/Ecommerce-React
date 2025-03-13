@@ -2,7 +2,9 @@ import { useState, ChangeEvent, FormEvent } from "react";
 import { registerUser } from "../api/auth";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { FormData,FormErrors } from "../types";
+import { FormData, FormErrors } from "../types";
+import { User } from 'lucide-react'; 
+import "../components/Login/login.css";
 
 
 const Register = (): JSX.Element => {
@@ -46,7 +48,7 @@ const Register = (): JSX.Element => {
   const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
-    setErrors({ ...errors, [name]: "" }); // Limpiando el error cuando el usuario edita
+    setErrors({ ...errors, [name]: "" }); // Limpia el error cuando el usuario edita
   };
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>): Promise<void> => {
@@ -70,101 +72,169 @@ const Register = (): JSX.Element => {
   };
 
   return (
-    <div className="container d-flex flex-column align-items-center justify-content-center min-vh-100">
-      <h2 className="mb-4 fw-bold">Registro</h2>
-      <form onSubmit={handleSubmit} className="d-flex flex-column gap-3 w-100" style={{ maxWidth: '400px' }}>
-        <div className="mb-3">
-          <input 
-            type="text" 
-            name="username" 
-            placeholder="Nombre de usuario" 
-            value={formData.username} 
-            onChange={handleChange} 
-            required 
-            className="form-control" 
-          />
-          {errors.username && <div className="text-danger">{errors.username}</div>}
-        </div>
+    <div 
+      className="container" 
+      style={{ 
+        color: "#fff", 
+        minHeight: "100vh", 
+        display: "flex", 
+        alignItems: "center", 
+        justifyContent: "center",
+        padding: "1rem"
+      }}
+    >
+      <div style={{ width: "100%", maxWidth: "400px" }}>
+      <h1
+        className="py-4 text-center text-white fw-light border-bottom border-white border-opacity-25 mb-4"
+        style={{
+          letterSpacing: "1.5px",
+          fontSize: "2.2rem",
+        }}
+      >
+       Registro
+      </h1>{" "}
 
-        <div className="mb-3">
-          <input 
-            type="text" 
-            name="firstName" 
-            placeholder="Nombre" 
-            value={formData.firstName} 
-            onChange={handleChange} 
-            required 
-            className="form-control" 
-          />
-          {errors.firstName && <div className="text-danger">{errors.firstName}</div>}
-        </div>
+        <form onSubmit={handleSubmit} className="d-flex flex-column gap-3">
+          <div className="mb-3">
+            <input 
+              type="text" 
+              name="username" 
+              placeholder="Nombre de usuario" 
+              value={formData.username} 
+              onChange={handleChange} 
+              required 
+              className="form-control" 
+              style={{
+                backgroundColor: "#1e1e1e",
+                border: "1px solid #333",
+                color: "#fff"
+              }}
+            />
+            {errors.username && <div className="text-danger">{errors.username}</div>}
+          </div>
 
-        <div className="mb-3">
-          <input 
-            type="text" 
-            name="lastName" 
-            placeholder="Apellido" 
-            value={formData.lastName} 
-            onChange={handleChange} 
-            required 
-            className="form-control" 
-          />
-          {errors.lastName && <div className="text-danger">{errors.lastName}</div>}
-        </div>
+          <div className="mb-3">
+            <input 
+              type="text" 
+              name="firstName" 
+              placeholder="Nombre" 
+              value={formData.firstName} 
+              onChange={handleChange} 
+              required 
+              className="form-control"
+              style={{
+                backgroundColor: "#1e1e1e",
+                border: "1px solid #333",
+                color: "#fff"
+              }}
+            />
+            {errors.firstName && <div className="text-danger">{errors.firstName}</div>}
+          </div>
 
-        <div className="mb-3">
-          <input 
-            type="email" 
-            name="email" 
-            placeholder="Correo" 
-            value={formData.email} 
-            onChange={handleChange} 
-            required 
-            className="form-control" 
-          />
-          {errors.email && <div className="text-danger">{errors.email}</div>}
-        </div>
+          <div className="mb-3">
+            <input 
+              type="text" 
+              name="lastName" 
+              placeholder="Apellido" 
+              value={formData.lastName} 
+              onChange={handleChange} 
+              required 
+              className="form-control"
+              style={{
+                backgroundColor: "#1e1e1e",
+                border: "1px solid #333",
+                color: "#fff"
+              }}
+            />
+            {errors.lastName && <div className="text-danger">{errors.lastName}</div>}
+          </div>
 
-        <div className="mb-3">
-          <input 
-            type="date" 
-            name="birthDate" 
-            value={formData.birthDate} 
-            onChange={handleChange} 
-            required 
-            className="form-control" 
-          />
-          {errors.birthDate && <div className="text-danger">{errors.birthDate}</div>}
-        </div>
+          <div className="mb-3">
+            <input 
+              type="email" 
+              name="email" 
+              placeholder="Correo" 
+              value={formData.email} 
+              onChange={handleChange} 
+              required 
+              className="form-control"
+              style={{
+                backgroundColor: "#1e1e1e",
+                border: "1px solid #333",
+                color: "#fff"
+              }}
+            />
+            {errors.email && <div className="text-danger">{errors.email}</div>}
+          </div>
 
-        <div className="mb-3">
-          <input 
-            type="password" 
-            name="password" 
-            placeholder="Contraseña (mínimo 6 caracteres)" 
-            value={formData.password} 
-            onChange={handleChange} 
-            required 
-            className="form-control" 
-          />
-          {errors.password && <div className="text-danger">{errors.password}</div>}
-        </div>
+          <div className="mb-3">
+            <input 
+              type="date" 
+              name="birthDate" 
+              value={formData.birthDate} 
+              onChange={handleChange} 
+              required 
+              className="form-control"
+              style={{
+                backgroundColor: "#1e1e1e",
+                border: "1px solid #333",
+                color: "#fff"
+              }}
+            />
+            {errors.birthDate && <div className="text-danger">{errors.birthDate}</div>}
+          </div>
 
-        <div className="mb-3">
-          <input 
-            type="password" 
-            name="confirmPassword" 
-            placeholder="Confirmar contraseña" 
-            value={formData.confirmPassword} 
-            onChange={handleChange} 
-            required 
-            className="form-control" 
-          />
-          {errors.confirmPassword && <div className="text-danger">{errors.confirmPassword}</div>}
-        </div>
+          <div className="mb-3">
+            <input 
+              type="password" 
+              name="password" 
+              placeholder="Contraseña (mínimo 6 caracteres)" 
+              value={formData.password} 
+              onChange={handleChange} 
+              required 
+              className="form-control"
+              style={{
+                backgroundColor: "#1e1e1e",
+                border: "1px solid #333",
+                color: "#fff"
+              }}
+            />
+            {errors.password && <div className="text-danger">{errors.password}</div>}
+          </div>
 
-        <button type="submit" className="btn btn-success">Registrarse</button>
-      </form>
+          <div className="mb-3">
+            <input 
+              type="password" 
+              name="confirmPassword" 
+              placeholder="Confirmar contraseña" 
+              value={formData.confirmPassword} 
+              onChange={handleChange} 
+              required 
+              className="form-control"
+              style={{
+                backgroundColor: "#1e1e1e",
+                border: "1px solid #333",
+                color: "#fff"
+              }}
+            />
+            {errors.confirmPassword && <div className="text-danger">{errors.confirmPassword}</div>}
+          </div>
+
+          <button 
+            type="submit" 
+            className="btn"
+            style={{
+              backgroundColor: "#333",
+              color: "#fff",
+              border: "none",
+              padding: "0.75rem",
+              borderRadius: "4px"
+            }}
+          >
+            Registrarse
+          </button>
+        </form>
+      </div>
     </div>
   );
 };
