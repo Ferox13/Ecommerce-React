@@ -15,13 +15,15 @@ const ProductList: React.FC = () => {
     const fetchData = async () => {
       const prods = await getProducts();
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      setProducts(prods.map((product: any) => ({
-        id: product.id,
-        title: product.title || "Default Title",
-        price: product.price || 0,
-        image: product.image || "",
-        description: product.description || ""
-      })));
+      setProducts(
+        prods.map((product: any) => ({
+          id: product.id,
+          title: product.title || "Default Title",
+          price: product.price || 0,
+          image: product.image || "",
+          description: product.description || "",
+        }))
+      );
       setLoading(false);
     };
 
@@ -32,7 +34,7 @@ const ProductList: React.FC = () => {
 
   return (
     <div className="container">
-  <h1
+      <h1
         className="py-4 text-center text-white fw-light border-bottom border-white border-opacity-25 mb-4"
         style={{
           letterSpacing: "1.5px",
@@ -41,10 +43,11 @@ const ProductList: React.FC = () => {
         }}
       >
         Todos los productos
-      </h1>{" "}      <div className="row justify-content-center align-items-center">
+      </h1>{" "}
+      <div className="row justify-content-center align-items-center">
         {products.map((product) => (
-          <div 
-            key={product.id} 
+          <div
+            key={product.id}
             className="col-12 col-md-6 col-lg-6 mb-5 d-flex justify-content-center align-items-center"
             style={{ maxWidth: "500px" }}
           >
@@ -58,10 +61,14 @@ const ProductList: React.FC = () => {
                     aria-label="Ver detalles"
                     style={{
                       borderRadius: "4px",
-                      transition: "background-color 0.3s ease"
+                      transition: "background-color 0.3s ease",
                     }}
-                    onMouseOver={(e) => e.currentTarget.style.backgroundColor = "#e91e63"}
-                    onMouseOut={(e) => e.currentTarget.style.backgroundColor = ""}
+                    onMouseOver={(e) =>
+                      (e.currentTarget.style.backgroundColor = "#e91e63")
+                    }
+                    onMouseOut={(e) =>
+                      (e.currentTarget.style.backgroundColor = "")
+                    }
                   >
                     <Eye size={18} /> <span className="small">Detalles</span>
                   </button>
