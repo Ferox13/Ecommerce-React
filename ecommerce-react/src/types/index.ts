@@ -11,9 +11,12 @@ export interface Product {
 export interface ProductContextType {
   products: Product[];
   loading: boolean;
+  searchResults: Product[];
   addNewProduct: (newProduct: Omit<Product, "id">) => Promise<void>;
   updateProduct: (id: string, updatedData: Partial<Omit<Product, "id">>) => Promise<void>;
   deleteProduct: (id: string) => Promise<void>;
+  searchProductsByTitle: (searchTerm: string) => Promise<void>;
+  searchProductsByDescription: (searchTerm: string) => Promise<void>;
 }
 
 export interface CartItem {

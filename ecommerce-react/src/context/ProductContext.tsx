@@ -4,6 +4,8 @@ import { db } from "../api/firebaseConfig";
 import { collection, getDocs, addDoc, updateDoc, deleteDoc, doc } from "firebase/firestore";
 import { toast } from "react-toastify";
 import { Product, ProductContextType } from "../types";
+// Importamos las funciones de búsqueda
+import { searchProductsByTitle as searchByTitle, searchProductsByDescription as searchByDesc } from "../api/product";
 
 export const ProductContext = createContext<ProductContextType | undefined>(
   undefined
@@ -18,6 +20,7 @@ export const ProductProvider: React.FC<ProductProviderProps> = ({
 }) => {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
+  const [searchResults, setSearchResults] = useState<Product[]>([]);
 
   // Obtener productos
   const fetchProducts = async () => {
@@ -82,12 +85,49 @@ export const ProductProvider: React.FC<ProductProviderProps> = ({
     }
   };
 
+  // Buscar productos por título
+  const searchProductsByTitle = async (searchTerm: string): Promise<void> => {
+    try {
+      setLoading(true);
+      const results = await searchByTitle(searchTerm);
+      setSearchResults(results);
+    } catch (error) {
+      toast.error("Error al buscar productos por título");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Buscar productos por descripción
+  const searchProductsByDescription = async (searchTerm: string): Promise<void> => {
+    try {
+      setLoading(true);
+      const results = await searchByDesc(searchTerm);
+      setSearchResults(results);
+    } catch (error) {
+      toast.error("Error al buscar productos por descripción");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
     fetchProducts();
   }, []);
 
   return (
-    <ProductContext.Provider value={{ products, loading, addNewProduct, updateProduct, deleteProduct }}>
+    <ProductContext.Provider 
+      value={{ 
+        products, 
+        loading, 
+        searchResults,
+        addNewProduct, 
+        updateProduct, 
+        deleteProduct,
+        searchProductsByTitle,
+        searchProductsByDescription
+      }}
+    >
       {children}
     </ProductContext.Provider>
   );
