@@ -126,3 +126,89 @@
 .greenColor{
   color: rgb(150, 144, 144) !important;
 }
+
+.album-cover {
+  position: relative;
+  overflow: hidden;
+}
+
+.format-badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+}
+
+.artist-name {
+  font-style: italic;
+  color: #666;
+}
+
+.music-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.vinyl-card {
+  transition: all 0.3s ease;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.vinyl-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+.image-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.disc-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(0,0,0,0.6);
+  color: white;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+}
+
+.overlay-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.8;
+  transition: all 0.3s ease;
+}
+
+.overlay-icon:hover {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+.rotate-animation {
+  transition: all 1s ease;
+  transform: scale(1.05);
+}
+
+.description-container {
+  display: flex;
+  background-color: #f8f9fa;
+  padding: 6px;
+  border-radius: 4px;
+  margin-bottom: 8px;
+  font-size: 0.9em;
+}

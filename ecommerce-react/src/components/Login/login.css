@@ -1,0 +1,7 @@
+.form-control::placeholder {
+    color: #fff !important;
+    opacity: 0.7!important;
+}.btn:hover {
+    background-color: #c41717;
+    cursor: pointer;
+}

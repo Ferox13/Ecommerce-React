@@ -39,17 +39,38 @@ const Login: FC = () => {
   };
 
   return (
-    <div className="d-flex flex-column align-items-center justify-content-center min-vh-100">
-      <h2 className="fs-2 fw-bold mb-3">Iniciar Sesión</h2>
-      <form onSubmit={handleLogin} className="d-flex flex-column gap-3 mt-3 w-100" style={{ maxWidth: "320px" }}>
+    <div
+      className="d-flex flex-column align-items-center justify-content-center min-vh-100 text-light"
+      style={{
+        backgroundImage: "url('/bg.svg')",
+        backgroundSize: "cover",
+        backgroundPosition: "center"
+      }}
+    >
+      <h1
+        className="py-4 text-center text-white fw-light border-bottom border-white border-opacity-25 mb-4"
+        style={{
+          letterSpacing: "1.5px",
+          fontSize: "2.2rem",
+        }}
+      >
+        Iniciar sesión
+      </h1>{" "}
+      <form
+        onSubmit={handleLogin}
+        className="d-flex flex-column gap-3 mt-3 w-100"
+        style={{ maxWidth: "320px" }}
+      >
         <div className="form-group">
           <input
             type="email"
             placeholder="Correo"
             value={email}
-            onChange={(e: ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
+            onChange={(e: ChangeEvent<HTMLInputElement>) =>
+              setEmail(e.target.value)
+            }
             required
-            className="form-control"
+            className="form-control bg-secondary text-light border-0"
           />
         </div>
         <div className="form-group">
@@ -57,9 +78,11 @@ const Login: FC = () => {
             type="password"
             placeholder="Contraseña"
             value={password}
-            onChange={(e: ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
+            onChange={(e: ChangeEvent<HTMLInputElement>) =>
+              setPassword(e.target.value)
+            }
             required
-            className="form-control"
+            className="form-control bg-secondary text-light border-0"
           />
         </div>
         <button type="submit" className="btn btn-primary">
@@ -68,7 +91,7 @@ const Login: FC = () => {
       </form>
       <button
         onClick={handleGoogleLogin}
-        className="btn btn-outline-secondary d-flex align-items-center justify-content-center gap-2 mt-3"
+        className="btn btn-outline-light d-flex align-items-center justify-content-center gap-2 mt-3"
         style={{ maxWidth: "320px" }}
       >
         <FcGoogle size={20} /> Iniciar sesión con Google

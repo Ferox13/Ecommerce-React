@@ -1,3 +1,67 @@
+.dark-container {
+  background-color: #121212;
+  color: #e0e0e0;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.dark-form {
+  background-color: #1e1e1e;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.dark-label {
+  color: #e0e0e0;
+}
+
+/* Dark theme for inputs */
+.dark-input {
+  background-color: #2a2a2a !important; 
+  color: #f0f0f0 !important;
+  border: 1px solid #444;
+}
+
+.dark-input:focus {
+  background-color: #333;
+  color: #fff;
+  border-color: #666;
+  box-shadow: 0 0 0 0.25rem rgba(255, 255, 255, 0.1);
+}
+
+/* For file inputs which have special styling */
+.dark-input[type="file"] {
+  background-color: #2a2a2a;
+  color: #f0f0f0;
+}
+
+/* For textarea */
+textarea.dark-input {
+  background-color: #2a2a2a;
+  color: #f0f0f0;
+}
+
+/* Placeholder text color */
+.dark-input::placeholder {
+  color: #999;
+}
+
+.dark-btn {
+  background-color: #444;
+  border-color: #444;
+  color: #e0e0e0;
+}
+
+.dark-btn:hover {
+  background-color: #555;
+  border-color: #555;
+}
+
+.icon {
+  vertical-align: middle;
+  margin-left: 4px;
+}
+
 /* :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
