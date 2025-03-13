@@ -4,6 +4,7 @@ import { useProducts } from "../hooks/useProducts";
 import { toast } from "react-toastify";
 import { getProductById } from "../api/product";
 import Loader from "../components/Loader";
+import "../index.css"; 
 
 const EditPanel = () => {
   const { id } = useParams<{ id: string }>();
@@ -118,12 +119,12 @@ const EditPanel = () => {
   }
 
   return (
-    <div className="container mt-4">
-      <h2 className="mb-4">Editar Producto</h2>
+    <div className="container mt-4 dark-container">
+      <h2 className="mb-4 text-light">Editar Producto</h2>
 
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="dark-form">
         <div className="mb-3">
-          <label htmlFor="title" className="form-label">
+          <label htmlFor="title" className="form-label dark-label">
             Nombre del producto
           </label>
           <input
@@ -134,12 +135,12 @@ const EditPanel = () => {
             value={productData.title}
             onChange={handleChange}
             required
-            className="form-control"
+            className="form-control dark-input"
           />
         </div>
 
         <div className="mb-3">
-          <label htmlFor="price" className="form-label">
+          <label htmlFor="price" className="form-label dark-label">
             Precio
           </label>
           <input
@@ -150,12 +151,12 @@ const EditPanel = () => {
             value={productData.price}
             onChange={handleChange}
             required
-            className="form-control"
+            className="form-control dark-input"
           />
         </div>
 
         <div className="mb-3">
-          <label htmlFor="description" className="form-label">
+          <label htmlFor="description" className="form-label dark-label">
             Descripción
           </label>
           <textarea
@@ -165,19 +166,19 @@ const EditPanel = () => {
             value={productData.description}
             onChange={handleChange}
             required
-            className="form-control"
+            className="form-control dark-input"
           />
         </div>
 
         {/* Mostrar la imagen actual */}
         {productData.image && (
           <div className="mb-3">
-            <label className="form-label">Imagen actual:</label>
+            <label className="form-label dark-label">Imagen actual:</label>
             <div>
               <img
                 src={`http://localhost:5000${productData.image}`}
                 alt="Imagen actual"
-                className="img-thumbnail"
+                className="img-thumbnail bg-dark"
                 style={{ maxHeight: "200px", maxWidth: "200px" }}
               />
             </div>
@@ -185,16 +186,16 @@ const EditPanel = () => {
         )}
 
         <div className="mb-3">
-          <label htmlFor="image" className="form-label">
+          <label htmlFor="image" className="form-label dark-label">
             Nueva imagen (opcional)
           </label>
           <input
             type="file"
             accept="image/*"
             onChange={handleFileChange}
-            className="form-control"
+            className="form-control dark-input"
           />
-          <small className="form-text text-muted">
+          <small className="form-text text-white">
             Si no seleccionas una nueva imagen, se mantendrá la actual.
           </small>
         </div>
