@@ -3,7 +3,6 @@ import { registerUser } from "../api/auth";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { FormData, FormErrors } from "../types";
-import { User } from 'lucide-react'; 
 import "../components/Login/login.css";
 
 

@@ -1,19 +1,30 @@
 import { useState } from "react";
 import { useProducts } from "../hooks/useProducts";
 import { toast } from "react-toastify";
+import { UploadCloud } from "lucide-react";
+import "../index.css"; 
 
 const CreatePanel = () => {
   const { addNewProduct } = useProducts();
-  const [productData, setProductData] = useState({ 
-    title: "", 
-    price: "", 
-    description: "", 
-    image: "" 
+  const [productData, setProductData] = useState({
+    title: "",
+    price: "",
+    description: "",
+    image: ""
   });
   const [imageFile, setImageFile] = useState<File | null>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setProductData({ ...productData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    
+    if (name === "price") {
+      const numValue = parseFloat(value);
+      if (numValue < 0) {
+        return;
+      }
+    }
+    
+    setProductData({ ...productData, [name]: value });
   };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -55,12 +66,19 @@ const CreatePanel = () => {
   };
 
   return (
-    <div className="container mt-4">
-      <h2 className="mb-4">Administración de Productos</h2>
-
-      <form onSubmit={handleSubmit}>
+    <div className="container mt-4 ">
+   <h1
+        className="py-4 text-center text-white fw-light border-bottom border-white border-opacity-25 mb-4"
+        style={{
+          letterSpacing: "1.5px",
+          fontSize: "2.2rem",
+        }}
+      >
+        Crear pproducto
+      </h1>{" "}
+      <form onSubmit={handleSubmit} >
         <div className="mb-3">
-          <label htmlFor="title" className="form-label">Nombre del producto</label>
+          <label htmlFor="title" className="form-label dark-label">Nombre del producto</label>
           <input
             type="text"
             name="title"
@@ -69,12 +87,12 @@ const CreatePanel = () => {
             value={productData.title}
             onChange={handleChange}
             required
-            className="form-control"
+            className="form-control dark-input"
           />
         </div>
         
         <div className="mb-3">
-          <label htmlFor="price" className="form-label">Precio</label>
+          <label htmlFor="price" className="form-label dark-label">Precio</label>
           <input
             type="number"
             name="price"
@@ -82,13 +100,15 @@ const CreatePanel = () => {
             placeholder="Precio"
             value={productData.price}
             onChange={handleChange}
+            min="0"
+            step="0.01"
             required
-            className="form-control"
+            className="form-control dark-input"
           />
         </div>
 
         <div className="mb-3">
-          <label htmlFor="description" className="form-label">Descripción</label>
+          <label htmlFor="description" className="form-label dark-label">Descripción</label>
           <textarea
             name="description"
             id="description"
@@ -96,22 +116,24 @@ const CreatePanel = () => {
             value={productData.description}
             onChange={handleChange}
             required
-            className="form-control"
+            className="form-control dark-input"
           />
         </div>
 
         <div className="mb-3">
-          <label htmlFor="image" className="form-label">Imagen</label>
+          <label htmlFor="image" className="form-label dark-label">
+            Imagen <UploadCloud size={16} className="icon" />
+          </label>
           <input
             type="file"
             accept="image/*"
             onChange={handleFileChange}
             required
-            className="form-control"
+            className="form-control dark-input"
           />
         </div>
 
-        <button type="submit" className="btn btn-primary">Agregar Producto</button>
+        <button type="submit" className="btn btn-primary dark-btn">Agregar Producto</button>
       </form>
     </div>
   );
