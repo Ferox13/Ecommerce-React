@@ -4,7 +4,7 @@ import { useProducts } from "../hooks/useProducts";
 import { toast } from "react-toastify";
 import { getProductById } from "../api/product";
 import Loader from "../components/Loader";
-import "../index.css"; 
+import "../index.css";
 
 const EditPanel = () => {
   const { id } = useParams<{ id: string }>();
@@ -119,10 +119,17 @@ const EditPanel = () => {
   }
 
   return (
-    <div className="container mt-4 dark-container">
-      <h2 className="mb-4 text-light">Editar Producto</h2>
-
-      <form onSubmit={handleSubmit} className="dark-form">
+    <div className="container mt-4 ">
+      <h1
+        className="py-4 text-center text-white fw-light border-bottom border-white border-opacity-25 mb-4"
+        style={{
+          letterSpacing: "1.5px",
+          fontSize: "2.2rem",
+        }}
+      >
+        Editar producto
+      </h1>{" "}
+      <form onSubmit={handleSubmit}>
         <div className="mb-3">
           <label htmlFor="title" className="form-label dark-label">
             Nombre del producto

@@ -74,7 +74,7 @@ const CreatePanel = () => {
           fontSize: "2.2rem",
         }}
       >
-        Crear pproducto
+        Crear producto
       </h1>{" "}
       <form onSubmit={handleSubmit} >
         <div className="mb-3">
