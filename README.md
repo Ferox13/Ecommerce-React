@@ -4,6 +4,35 @@
 
 Fernando Rodríguez Rodríguez
 
+## Iniciar
+
+### Configurar el servidor
+Instala las dependencias del servidor:
+```bash
+npm install
+```
+
+Inicia el servidor Express:
+```bash
+npm start server.js
+```
+
+### Configurar la aplicación React
+Navega al directorio de la aplicación React:
+```bash
+cd .\ecommerce-react\
+```
+
+Instala las dependencias de React:
+```bash
+npm install
+```
+
+Inicia la aplicación en modo desarrollo:
+```bash
+npm run dev
+```
+
 ## Descripción
 Este proyecto consiste en el desarrollo de una aplicación web de venta de productos que podría evolucionar hacia un proyecto de fin de ciclo. La plataforma permite la venta de diversos productos como libros, videojuegos, ropa, entre otros.
 
