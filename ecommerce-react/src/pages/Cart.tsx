@@ -43,7 +43,7 @@ const Cart: React.FC = () => {
   return (
     <div
       className="container py-4"
-      style={{ backgroundColor: "#121212", color: "#E0E0E0", minHeight: "100vh" }}
+      style={{  color: "#E0E0E0", minHeight: "100vh" }}
     >
       <h1
         className="py-4 text-center fw-light border-bottom border-white border-opacity-25 mb-4"
