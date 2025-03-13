@@ -39,7 +39,6 @@ const ProductList: React.FC = () => {
         style={{
           letterSpacing: "1.5px",
           fontSize: "2.2rem",
-          textShadow: "0px 2px 4px rgba(0,0,0,0.2)",
         }}
       >
         Todos los productos
