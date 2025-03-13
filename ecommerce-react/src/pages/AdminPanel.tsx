@@ -5,11 +5,14 @@ import ProductCard from "../components/ProductCard/ProductCard";
 import Loader from "../components/Loader";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { Eye, Pencil, Trash2 } from "lucide-react"; // Importar los iconos adicionales
+import { Eye, Pencil, Trash2 } from "lucide-react";
+import { Modal, Button } from "react-bootstrap"; // Add this import
 
 const AdminPanel: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
+  const [showDeleteModal, setShowDeleteModal] = useState(false); // Add this state
+  const [productToDelete, setProductToDelete] = useState<string | null>(null); // Add this state
   const navigate = useNavigate();
 
   const fetchData = async () => {
@@ -37,17 +40,26 @@ const AdminPanel: React.FC = () => {
     fetchData();
   }, []);
 
-  const handleDeleteProduct = async (id: string) => {
-    if (window.confirm("¿Está seguro de que desea eliminar este producto?")) {
-      try {
-        await deleteProduct(id);
-        toast.success("Producto eliminado correctamente");
-        // Actualizar la lista de productos
-        setProducts(products.filter((product) => product.id !== id));
-      } catch (error) {
-        toast.error("Error al eliminar el producto");
-        console.error("Error al eliminar producto:", error);
-      }
+  const handleDeleteProduct = (id: string) => {
+    setProductToDelete(id);
+    setShowDeleteModal(true);
+  };
+
+  const confirmDeleteProduct = async () => {
+    if (!productToDelete) return;
+    
+    try {
+      await deleteProduct(productToDelete);
+      toast.success("Producto eliminado correctamente");
+      // Actualizar la lista de productos
+      setProducts(products.filter((product) => product.id !== productToDelete));
+    } catch (error) {
+      toast.error("Error al eliminar el producto");
+      console.error("Error al eliminar producto:", error);
+    } finally {
+      // Close the modal
+      setShowDeleteModal(false);
+      setProductToDelete(null);
     }
   };
 
@@ -108,6 +120,26 @@ const AdminPanel: React.FC = () => {
           </div>
         ))}
       </div>
+
+      {/* Delete Confirmation Modal with Dark Theme */}
+      <Modal 
+        show={showDeleteModal} 
+        onHide={() => setShowDeleteModal(false)}
+        contentClassName="bg-dark text-light"
+      >
+        <Modal.Header closeButton className="border-secondary">
+          <Modal.Title>Confirmar eliminación</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>¿Está seguro de que desea eliminar este producto?</Modal.Body>
+        <Modal.Footer className="border-secondary">
+          <Button variant="outline-light" onClick={() => setShowDeleteModal(false)}>
+            Cancelar
+          </Button>
+          <Button variant="danger" onClick={confirmDeleteProduct}>
+            Eliminar
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 };
