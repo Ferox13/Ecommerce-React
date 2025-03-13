@@ -9,11 +9,11 @@ const Footer: React.FC = () => {
         <div className="text-center text-gray-500 text-sm">
           <p>&copy; 2025 VinylVault. Todos los derechos reservados.</p>
           <p>
-            <a href="#" className="text-gray-400 hover:text-white">
+            <a href="#" className="text-gray-400 hover:text-white text-decoration-none text-dark">
               Política de privacidad
             </a>{" "}
             |{" "}
-            <a href="#" className="text-gray-400 hover:text-white">
+            <a href="#" className="text-gray-400 hover:text-white text-decoration-none text-dark">
               Términos de servicio
             </a>
           </p>
