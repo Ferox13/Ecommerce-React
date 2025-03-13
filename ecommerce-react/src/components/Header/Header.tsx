@@ -64,7 +64,7 @@ const Header: React.FC = () => {
             )}
           </ul>
 
-          {/* Login/Logout, register and Cart */}
+          {/* Login/Logout, registro y carro */}
           <ul className="navbar-nav ms-auto">
             {!user ? (
               <>

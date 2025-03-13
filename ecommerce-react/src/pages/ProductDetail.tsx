@@ -22,7 +22,6 @@ const ProductDetail: React.FC = () => {
 
     const fetchProduct = async () => {
       try {
-        // Usar el ID directamente como string, sin convertir a número
         const fetchedProduct = await getProductById(id);
         if (!fetchedProduct) throw new Error("Producto no encontrado");
         setProduct(fetchedProduct);

@@ -7,8 +7,8 @@ interface CartItemProps {
     title: string;
     price: number;
     quantity: number;
-    image?: string; // Optional image for the product
-    [key: string]: unknown; // For any additional properties
+    image?: string; 
+    [key: string]: unknown; 
   };
 }
 

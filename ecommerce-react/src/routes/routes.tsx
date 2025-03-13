@@ -18,7 +18,6 @@ import AdminPanel from "../pages/AdminPanel";
 import EditPanel from "../pages/EditPanel";
 import Cart from "../pages/Cart";
 
-// Define types for route components
 
 const AuthRoute = ({ children }: { children: ReactNode }) => {
   const { user } = useAuth();

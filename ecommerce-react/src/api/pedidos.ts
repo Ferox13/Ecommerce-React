@@ -1,7 +1,6 @@
 import { db } from "./firebaseConfig";
 import { collection, addDoc, getDocs, doc, getDoc } from "firebase/firestore";
 
-// Define interfaces for type safety
 interface CartItem {
   id: string;
   name: string;
