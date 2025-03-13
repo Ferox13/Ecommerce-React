@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useEffect, useState } from "react";
 import { getProducts, deleteProduct } from "../api/product";
 import { Product } from "../types";
@@ -18,7 +20,6 @@ const AdminPanel: React.FC = () => {
   const fetchData = async () => {
     try {
       const prods = await getProducts();
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       setProducts(
         prods.map((product: any) => ({
           id: product.id,
@@ -30,7 +31,6 @@ const AdminPanel: React.FC = () => {
       );
     } catch (error) {
       toast.error("Error al cargar productos");
-      console.error("Error al cargar productos:", error);
     } finally {
       setLoading(false);
     }
@@ -55,7 +55,6 @@ const AdminPanel: React.FC = () => {
       setProducts(products.filter((product) => product.id !== productToDelete));
     } catch (error) {
       toast.error("Error al eliminar el producto");
-      console.error("Error al eliminar producto:", error);
     } finally {
       // Close the modal
       setShowDeleteModal(false);

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useState } from "react";
 import { useProducts } from "../hooks/useProducts";
 import { toast } from "react-toastify";
@@ -61,7 +62,6 @@ const CreatePanel = () => {
       toast.success("Producto agregado con imagen local");
     } catch (error) {
       toast.error("Error al subir la imagen");
-      console.error("Error:", error);
     }
   };
 

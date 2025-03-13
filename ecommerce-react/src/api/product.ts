@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { 
   db 
 } from "./firebaseConfig";
@@ -11,6 +12,7 @@ import {
   deleteDoc, 
 } from "firebase/firestore";
 import { Product } from "../types";
+import { toast } from "react-toastify";
 
 // Obtener productos
 export const getProducts = async () => {
@@ -21,25 +23,23 @@ export const getProducts = async () => {
 // Obtener producto por id
 export const getProductById = async (id: string | number): Promise<Product | null> => {
   if (!id) {
-    console.error("⛔ ID del producto inválido.");
+    toast.error("ID del producto inválido.");
     return null;
   }
 
   try {
-    const idStr = String(id); // Convertir explícitamente a string
-    console.log("🔎 Buscando producto con ID en Firestore:", idStr);
+    const idStr = String(id); 
     const productRef = doc(db, "products", idStr);
     const productSnap = await getDoc(productRef);
 
     if (!productSnap.exists()) {
-      console.error("❌ Producto no encontrado en Firestore.");
+      toast.error("Producto no encontrado en Firestore.");
       return null;
     }
 
-    console.log("✅ Producto encontrado:", productSnap.data());
     return { id: productSnap.id, ...productSnap.data() } as Product;
   } catch (error) {
-    console.error("⚠️ Error al obtener producto:", error);
+    toast.error("Error al obtener producto:");
     return null;
   }
 };

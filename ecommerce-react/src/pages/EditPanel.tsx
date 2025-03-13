@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useProducts } from "../hooks/useProducts";
@@ -46,7 +47,6 @@ const EditPanel = () => {
         setLoading(false);
       } catch (error) {
         toast.error("Error al cargar el producto");
-        console.error("Error al cargar producto:", error);
         navigate("/admin");
       }
     };
@@ -110,7 +110,6 @@ const EditPanel = () => {
       navigate("/admin");
     } catch (error) {
       toast.error("Error al actualizar el producto");
-      console.error("Error:", error);
     }
   };
 

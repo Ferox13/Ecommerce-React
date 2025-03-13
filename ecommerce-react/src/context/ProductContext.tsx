@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { createContext, useEffect, useState } from "react";
 import { db } from "../api/firebaseConfig";
 import { collection, getDocs, addDoc, updateDoc, deleteDoc, doc } from "firebase/firestore";
@@ -50,7 +51,6 @@ export const ProductProvider: React.FC<ProductProviderProps> = ({
       setProducts([...products, addedProduct]); // Actualizar estado localmente
       toast.success("Producto agregado correctamente");
     } catch (error) {
-      console.error("rror al agregar producto:", error);
       toast.error("Error al agregar producto");
     }
   };
@@ -66,7 +66,6 @@ export const ProductProvider: React.FC<ProductProviderProps> = ({
       );
       // toast.success("Producto actualizado correctamente");
     } catch (error) {
-      console.error("Error al actualizar producto:", error);
       toast.error("Error al actualizar producto");
     }
   };
@@ -79,7 +78,6 @@ export const ProductProvider: React.FC<ProductProviderProps> = ({
       setProducts(products.filter((p) => String(p.id) !== id));
       toast.success("Producto eliminado correctamente");
     } catch (error) {
-      console.error("Error al eliminar producto:", error);
       toast.error("Error al eliminar producto");
     }
   };

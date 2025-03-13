@@ -15,7 +15,6 @@ const ProductDetail: React.FC = () => {
 
   useEffect(() => {
     if (!id) {
-      console.error("ID del producto no válido.");
       toast.error("ID del producto no válido.");
       navigate("/");
       return;
@@ -23,17 +22,14 @@ const ProductDetail: React.FC = () => {
 
     const fetchProduct = async () => {
       try {
-        console.log(`🔍 Buscando producto con ID: ${id}`);
         // Usar el ID directamente como string, sin convertir a número
         const fetchedProduct = await getProductById(id);
         if (!fetchedProduct) throw new Error("Producto no encontrado");
         setProduct(fetchedProduct);
       } catch (error) {
         if (error instanceof Error) {
-          console.error("❌ Error obteniendo producto:", error);
           toast.error(error.message);
         } else {
-          console.error("❌ Error obteniendo producto:", error);
           toast.error("Error obteniendo producto");
         }
         navigate("/");
