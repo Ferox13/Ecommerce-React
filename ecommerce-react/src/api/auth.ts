@@ -12,6 +12,7 @@ import {
 } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
 import { db } from "./firebaseConfig";
+import { toast } from "react-toastify";
 
 export interface AdditionalData {
   username: string;
@@ -61,7 +62,7 @@ export const loginUser = async (
     );
     return userCredential.user;
   } catch (error: unknown) {
-    console.error("Hubo un error al iniciar sesión", error);
+    toast.error("Hubo un error al iniciar sesión");
     throw (error as Error).message;
   }
 };
@@ -71,7 +72,7 @@ export const logoutUser = async (): Promise<void> => {
   try {
     await signOut(auth);
   } catch (error: unknown) {
-    console.error("Hubo un error al cerrar la sesión", error);
+    toast.error("Hubo un error al cerrar la sesión");
     if (error instanceof Error) {
       throw error.message;
     }
@@ -86,7 +87,7 @@ export const loginWithGoogle = async (): Promise<User> => {
     const result: UserCredential = await signInWithPopup(auth, provider);
     return result.user;
   } catch (error: unknown) {
-    console.error("Hubo un error al iniciar sesión con Google", error);
+    toast.error("Hubo un error al iniciar sesión con Google");
     if (error instanceof Error) {
       throw error.message;
     }

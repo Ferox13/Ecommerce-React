@@ -15,7 +15,6 @@ interface CartItemProps {
 const CartItem: React.FC<CartItemProps> = ({ item }) => {
   const { updateQuantity, removeProduct } = useCart();
 
-  console.log("CartItem:", item);
 
   return (
     <div className="card mb-3" style={{ maxWidth: "540px" }}>
