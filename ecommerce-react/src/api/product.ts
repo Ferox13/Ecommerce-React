@@ -76,3 +76,40 @@ export const deleteProduct = async (id: string): Promise<void> => {
     throw errorMessage;
   }
 };
+
+// Buscar productos por título
+export const searchProductsByTitle = async (searchTerm: string): Promise<Product[]> => {
+  try {
+    const querySnapshot = await getDocs(collection(db, "products"));
+    const products = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }) as Product);
+    
+    // Filtrar productos que incluyen el término de búsqueda en el título (insensible a mayúsculas/minúsculas)
+    const filteredProducts = products.filter(product => 
+      product.title && product.title.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    
+    return filteredProducts;
+  } catch (error) {
+    const errorMessage = error instanceof Error ? error.message : 'Error desconocido';
+    toast.error(`Error al buscar productos por título: ${errorMessage}`);
+    return [];
+  }
+};
+
+// Buscar productos por descripción
+export const searchProductsByDescription = async (searchTerm: string): Promise<Product[]> => {
+  try {
+    const querySnapshot = await getDocs(collection(db, "products"));
+    const products = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }) as Product);
+    
+    const filteredProducts = products.filter(product => 
+      product.description && product.description.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    
+    return filteredProducts;
+  } catch (error) {
+    const errorMessage = error instanceof Error ? error.message : 'Error desconocido';
+    toast.error(`Error al buscar productos por descripción: ${errorMessage}`);
+    return [];
+  }
+};
