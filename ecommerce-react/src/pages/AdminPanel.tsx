@@ -58,11 +58,9 @@ const AdminPanel: React.FC = () => {
     try {
       await deleteProduct(productToDelete);
       toast.success("Producto eliminado correctamente");
-      // No need to manually update products as it will be handled by context
     } catch (error) {
       toast.error("Error al eliminar el producto");
     } finally {
-      // Close the modal
       setShowDeleteModal(false);
       setProductToDelete(null);
     }
@@ -197,7 +195,6 @@ const AdminPanel: React.FC = () => {
         ))}
       </div>
 
-      {/* Delete Confirmation Modal with Dark Theme */}
       <Modal 
         show={showDeleteModal} 
         onHide={() => setShowDeleteModal(false)}

@@ -7,7 +7,6 @@ interface CartProviderProps {
   children: ReactNode;
 }
 
-// Create context with type
 export const CartContext = createContext<CartContextType | undefined>(undefined);
 
 export const CartProvider = ({ children }: CartProviderProps): JSX.Element => {

@@ -1,13 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { useCart } from "../hooks/useCart";
 import { toast } from "react-toastify";
 import { useAuth } from "../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
+import { Modal, Button } from "react-bootstrap";
 
 const Cart: React.FC = () => {
   const { cart, updateQuantity, removeProduct } = useCart();
   const { user } = useAuth();
   const navigate = useNavigate();
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [productToDelete, setProductToDelete] = useState<string | null>(null);
 
   if (!user) {
     navigate("/login");
@@ -27,12 +30,17 @@ const Cart: React.FC = () => {
   };
 
   const handleRemove = (productId: string): void => {
-    if (
-      window.confirm("¿Seguro que quieres eliminar este producto del carrito?")
-    ) {
-      removeProduct(productId);
-      toast.success("Producto eliminado del carrito");
-    }
+    setProductToDelete(productId);
+    setShowDeleteModal(true);
+  };
+  
+  const confirmRemoveProduct = (): void => {
+    if (!productToDelete) return;
+    
+    removeProduct(productToDelete);
+    toast.success("Producto eliminado del carrito");
+    setShowDeleteModal(false);
+    setProductToDelete(null);
   };
 
   const total = cart.reduce<number>(
@@ -117,6 +125,25 @@ const Cart: React.FC = () => {
           </div>
         </>
       )}
+      
+      <Modal 
+        show={showDeleteModal} 
+        onHide={() => setShowDeleteModal(false)}
+        contentClassName="bg-dark text-light"
+      >
+        <Modal.Header closeButton className="border-secondary">
+          <Modal.Title>Confirmar eliminación</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>¿Está seguro de que desea eliminar este producto del carrito?</Modal.Body>
+        <Modal.Footer className="border-secondary">
+          <Button variant="outline-light" onClick={() => setShowDeleteModal(false)}>
+            Cancelar
+          </Button>
+          <Button variant="danger" onClick={confirmRemoveProduct}>
+            Eliminar
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 };
